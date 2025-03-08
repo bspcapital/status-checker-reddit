@@ -25,37 +25,43 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col items-center justify-between py-4 md:py-8 px-4 max-w-4xl mx-auto w-full">
+      <main className="flex-1 flex flex-col items-center py-4 md:py-6 px-4 max-w-4xl mx-auto w-full">
         {/* Top Ad */}
-        {!isMobile && <AdPlacement position="top" />}
+        <div className="w-full mb-4">
+          {!isMobile && <AdPlacement position="top" />}
+        </div>
         
         {/* Status Indicator */}
-        <div className="my-6 md:my-8 w-full">
+        <div className="w-full mb-4">
           <StatusIndicator status={currentStatus.status} message={currentStatus.message} />
         </div>
         
         {/* History Graph */}
-        <div className="w-full mb-6">
+        <div className="w-full mb-4">
           <HistoryGraph data={historyData} />
         </div>
         
         {/* City Statistics */}
-        <div className="w-full mb-6">
+        <div className="w-full mb-4">
           <ReportStatistics />
         </div>
         
         {/* User Reporting */}
-        <div className="w-full mb-6">
+        <div className="w-full mb-4">
           <UserReporting />
         </div>
         
-        {/* Related Sites - make sure this is visible by ensuring it has proper margin */}
-        <div className="w-full mb-8 mt-2">
+        {/* Related Sites - with increased visibility */}
+        <div className="w-full mb-6 mt-2">
           <RelatedSites />
         </div>
         
         {/* Mobile Bottom Ad */}
-        {isMobile && <AdPlacement position="bottom" className="mt-2 mb-4" />}
+        {isMobile && (
+          <div className="w-full mb-4">
+            <AdPlacement position="bottom" />
+          </div>
+        )}
       </main>
       
       {/* Desktop Side Ads */}
@@ -70,8 +76,12 @@ const Index = () => {
         </>
       )}
       
-      {/* Bottom Ad for both desktop and mobile */}
-      {!isMobile && <AdPlacement position="bottom" className="mb-4" />}
+      {/* Bottom Ad for desktop */}
+      {!isMobile && (
+        <div className="w-full max-w-4xl mx-auto mb-4">
+          <AdPlacement position="bottom" />
+        </div>
+      )}
     </div>
   );
 };

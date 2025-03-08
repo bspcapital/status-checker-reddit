@@ -23,15 +23,15 @@ const AdPlacement = ({ position, className = '' }: AdPlacementProps) => {
   const getPositionStyles = () => {
     switch (position) {
       case 'top':
-        return 'w-full h-[90px] mx-auto my-4';
+        return 'w-full h-[90px] mx-auto my-2';
       case 'bottom':
-        return 'w-full h-[90px] mx-auto my-4';
+        return 'w-full h-[90px] mx-auto my-2';
       case 'left':
-        return 'w-[160px] h-[600px] my-8 mx-auto';
+        return 'w-[160px] h-[600px] my-4 mx-auto';
       case 'right':
-        return 'w-[160px] h-[600px] my-8 mx-auto';
+        return 'w-[160px] h-[600px] my-4 mx-auto';
       default:
-        return 'w-full h-[90px] mx-auto my-4';
+        return 'w-full h-[90px] mx-auto my-2';
     }
   };
   
