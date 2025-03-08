@@ -12,9 +12,9 @@ const RelatedSites = () => {
   ];
   
   return (
-    <div className="w-full max-w-xl mx-auto animate-slide-up glass rounded-2xl p-4 border border-primary/20 shadow-sm" style={{ animationDelay: '150ms' }}>
+    <div className="w-full max-w-md mx-auto animate-slide-up glass rounded-2xl p-4 border border-primary/20 shadow-sm" style={{ animationDelay: '150ms' }}>
       <h3 className="text-center text-base font-medium mb-3">Check other sites:</h3>
-      <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 overflow-y-auto max-h-[150px] py-1">
         {sites.map((site, index) => (
           <a
             key={index}

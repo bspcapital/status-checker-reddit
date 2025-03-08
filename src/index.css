@@ -75,8 +75,10 @@
   }
   
   html, body {
-    @apply h-full w-full m-0 p-0 overflow-hidden;
+    @apply h-full w-full m-0 p-0;
     font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    overflow-y: auto;
   }
   
   body {
@@ -85,6 +87,7 @@
   
   #root {
     @apply h-full w-full max-w-none m-0 p-0;
+    overflow-y: auto;
   }
   
   .glass {

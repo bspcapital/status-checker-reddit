@@ -37,7 +37,7 @@ const AdPlacement = ({ position, className = '' }: AdPlacementProps) => {
     }
   };
   
-  // Don't render side ads on mobile
+  // On mobile, we still want to show top and bottom ads
   if ((position === 'left' || position === 'right') && isMobile) {
     return null;
   }

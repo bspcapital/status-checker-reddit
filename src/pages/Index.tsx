@@ -25,7 +25,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col items-center py-4 px-4 max-w-4xl mx-auto w-full">
+      <main className="flex-1 flex flex-col items-center py-4 px-4 max-w-4xl mx-auto w-full pb-20">
         {/* Top Ad */}
         <div className="w-full mb-3">
           <AdPlacement position="top" />
