@@ -49,8 +49,8 @@ const Index = () => {
           <UserReporting />
         </div>
         
-        {/* Related Sites */}
-        <div className="w-full mb-8">
+        {/* Related Sites - positioned at the bottom */}
+        <div className="w-full mt-auto mb-8">
           <RelatedSites />
         </div>
         

@@ -1,15 +1,13 @@
 
 import { useEffect, useState } from 'react';
 import { DayStatus, formatDate } from '@/utils/statusData';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface HistoryGraphProps {
   data: DayStatus[];
 }
 
 const HistoryGraph = ({ data }: HistoryGraphProps) => {
-  const [tooltipContent, setTooltipContent] = useState('');
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
-  const [showTooltip, setShowTooltip] = useState(false);
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
@@ -18,33 +16,11 @@ const HistoryGraph = ({ data }: HistoryGraphProps) => {
   
   const getStatusText = (status: string): string => {
     switch (status) {
-      case 'up': return 'No downtime recorded on this day';
-      case 'down': return 'Downtime recorded';
+      case 'up': return 'No issues';
+      case 'down': return 'Downtime';
       case 'issues': return 'Issues reported';
       default: return 'Unknown status';
     }
-  };
-  
-  const handleDayMouseEnter = (day: DayStatus, event: React.MouseEvent) => {
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-    setTooltipPosition({ 
-      x: rect.left + rect.width / 2, 
-      y: rect.top - 10 
-    });
-    
-    const date = new Date(day.date);
-    const formattedDate = date.toLocaleDateString('en-US', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    });
-    
-    setTooltipContent(`${formattedDate}\n${getStatusText(day.status)}`);
-    setShowTooltip(true);
-  };
-  
-  const handleDayMouseLeave = () => {
-    setShowTooltip(false);
   };
   
   return (
@@ -70,33 +46,26 @@ const HistoryGraph = ({ data }: HistoryGraphProps) => {
         
         <div className="relative h-12 mb-4">
           <div className="flex w-full h-10 gap-[1px]">
-            {data.map((day, index) => (
-              <div
-                key={index}
-                className={`flex-1 h-10 ${
-                  day.status === 'up' ? 'bg-[#8BC34A]' : 
-                  day.status === 'down' ? 'bg-status-down/80' : 
-                  'bg-status-issues/80'
-                }`}
-                onMouseEnter={(e) => handleDayMouseEnter(day, e)}
-                onMouseLeave={handleDayMouseLeave}
-              />
-            ))}
+            <TooltipProvider>
+              {data.map((day, index) => (
+                <Tooltip key={index}>
+                  <TooltipTrigger asChild>
+                    <div
+                      className={`flex-1 h-10 ${
+                        day.status === 'up' ? 'bg-[#8BC34A]' : 
+                        day.status === 'down' ? 'bg-status-down/80' : 
+                        'bg-status-issues/80'
+                      }`}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{getStatusText(day.status)} on {formatDate(day.date)}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </TooltipProvider>
           </div>
         </div>
-        
-        {showTooltip && (
-          <div 
-            className="fixed z-50 bg-white text-black px-4 py-3 rounded-md text-sm shadow-md whitespace-pre-line border"
-            style={{
-              left: `${tooltipPosition.x}px`,
-              top: `${tooltipPosition.y - 75}px`,
-              transform: 'translateX(-50%)'
-            }}
-          >
-            {tooltipContent}
-          </div>
-        )}
       </div>
     </div>
   );
