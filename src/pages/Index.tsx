@@ -4,6 +4,7 @@ import StatusIndicator from '@/components/StatusIndicator';
 import HistoryGraph from '@/components/HistoryGraph';
 import UserReporting from '@/components/UserReporting';
 import RelatedSites from '@/components/RelatedSites';
+import ReportStatistics from '@/components/ReportStatistics';
 import AdPlacement from '@/components/AdPlacement';
 import { getCurrentStatus, historyData } from '@/utils/statusData';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -36,6 +37,11 @@ const Index = () => {
         {/* History Graph */}
         <div className="w-full mb-8">
           <HistoryGraph data={historyData} />
+        </div>
+        
+        {/* City Statistics */}
+        <div className="w-full mb-8">
+          <ReportStatistics />
         </div>
         
         {/* User Reporting */}

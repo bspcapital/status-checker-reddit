@@ -5,6 +5,8 @@ const RelatedSites = () => {
     { name: 'Is YouTube Down', url: 'https://isyoutubedown.net' },
     { name: 'Is Twitter Down', url: 'https://istwitterdown.net' },
     { name: 'Is Instagram Down', url: 'https://isinstagramdown.net' },
+    { name: 'Is Discord Down', url: 'https://isdiscorddown.net' },
+    { name: 'Is Twitch Down', url: 'https://istwitchdown.net' }
   ];
   
   return (
