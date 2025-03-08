@@ -10,10 +10,10 @@ const RelatedSites = () => {
   ];
   
   return (
-    <div className="w-full animate-slide-up" style={{ animationDelay: '150ms' }}>
-      <div className="text-center text-sm text-muted-foreground">
-        <div className="mb-1">Check other sites:</div>
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+    <div className="w-full animate-slide-up glass rounded-2xl p-4 sm:p-5 border" style={{ animationDelay: '150ms' }}>
+      <div className="text-center">
+        <div className="mb-2 text-sm font-medium">Check other sites:</div>
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
           {sites.map((site, index) => (
             <a
               key={index}

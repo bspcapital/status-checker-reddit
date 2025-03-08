@@ -30,32 +30,32 @@ const Index = () => {
         {!isMobile && <AdPlacement position="top" />}
         
         {/* Status Indicator */}
-        <div className="my-8 md:my-12 w-full">
+        <div className="my-6 md:my-8 w-full">
           <StatusIndicator status={currentStatus.status} message={currentStatus.message} />
         </div>
         
         {/* History Graph */}
-        <div className="w-full mb-8">
+        <div className="w-full mb-6">
           <HistoryGraph data={historyData} />
         </div>
         
         {/* City Statistics */}
-        <div className="w-full mb-8">
+        <div className="w-full mb-6">
           <ReportStatistics />
         </div>
         
         {/* User Reporting */}
-        <div className="w-full mb-8">
+        <div className="w-full mb-6">
           <UserReporting />
         </div>
         
-        {/* Related Sites - positioned at the bottom */}
-        <div className="w-full mt-auto mb-8">
+        {/* Related Sites - make sure this is visible by ensuring it has proper margin */}
+        <div className="w-full mb-8 mt-2">
           <RelatedSites />
         </div>
         
         {/* Mobile Bottom Ad */}
-        {isMobile && <AdPlacement position="bottom" className="mb-4" />}
+        {isMobile && <AdPlacement position="bottom" className="mt-2 mb-4" />}
       </main>
       
       {/* Desktop Side Ads */}
