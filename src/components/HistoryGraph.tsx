@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { DayStatus, formatDate } from '@/utils/statusData';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface HistoryGraphProps {
   data: DayStatus[];
@@ -9,6 +10,8 @@ interface HistoryGraphProps {
 
 const HistoryGraph = ({ data }: HistoryGraphProps) => {
   const [mounted, setMounted] = useState(false);
+  const [openTooltipIndex, setOpenTooltipIndex] = useState<number | null>(null);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     setMounted(true);
@@ -20,6 +23,12 @@ const HistoryGraph = ({ data }: HistoryGraphProps) => {
       case 'down': return 'Downtime';
       case 'issues': return 'Issues reported';
       default: return 'Unknown status';
+    }
+  };
+
+  const handleBlockClick = (index: number) => {
+    if (isMobile) {
+      setOpenTooltipIndex(openTooltipIndex === index ? null : index);
     }
   };
   
@@ -48,14 +57,15 @@ const HistoryGraph = ({ data }: HistoryGraphProps) => {
           <div className="flex w-full h-10 gap-[1px]">
             <TooltipProvider>
               {data.map((day, index) => (
-                <Tooltip key={index}>
+                <Tooltip key={index} open={isMobile ? openTooltipIndex === index : undefined}>
                   <TooltipTrigger asChild>
                     <div
                       className={`flex-1 h-10 ${
                         day.status === 'up' ? 'bg-[#8BC34A]' : 
                         day.status === 'down' ? 'bg-status-down/80' : 
                         'bg-status-issues/80'
-                      }`}
+                      } cursor-pointer`}
+                      onClick={() => handleBlockClick(index)}
                     />
                   </TooltipTrigger>
                   <TooltipContent>
