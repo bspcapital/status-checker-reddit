@@ -49,13 +49,13 @@ const Index = () => {
           <UserReporting />
         </div>
         
-        {/* Mobile Bottom Ad */}
-        {isMobile && <AdPlacement position="bottom" className="mb-4" />}
-        
         {/* Related Sites */}
-        <div className="w-full mb-2 md:mb-4">
+        <div className="w-full mb-8">
           <RelatedSites />
         </div>
+        
+        {/* Mobile Bottom Ad */}
+        {isMobile && <AdPlacement position="bottom" className="mb-4" />}
       </main>
       
       {/* Desktop Side Ads */}

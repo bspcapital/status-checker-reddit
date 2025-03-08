@@ -69,19 +69,20 @@ const HistoryGraph = ({ data }: HistoryGraphProps) => {
         </div>
         
         <div className="relative h-12 mb-4">
-          {data.map((day, index) => (
-            <div
-              key={index}
-              className={`absolute bottom-0 h-10 w-[1.1%] ${
-                day.status === 'up' ? 'bg-[#8BC34A]' : 
-                day.status === 'down' ? 'bg-status-down/80' : 
-                'bg-status-issues/80'
-              }`}
-              style={{ left: `${index * 1.1}%` }}
-              onMouseEnter={(e) => handleDayMouseEnter(day, e)}
-              onMouseLeave={handleDayMouseLeave}
-            />
-          ))}
+          <div className="flex w-full h-10 gap-[1px]">
+            {data.map((day, index) => (
+              <div
+                key={index}
+                className={`flex-1 h-10 ${
+                  day.status === 'up' ? 'bg-[#8BC34A]' : 
+                  day.status === 'down' ? 'bg-status-down/80' : 
+                  'bg-status-issues/80'
+                }`}
+                onMouseEnter={(e) => handleDayMouseEnter(day, e)}
+                onMouseLeave={handleDayMouseLeave}
+              />
+            ))}
+          </div>
         </div>
         
         {showTooltip && (
