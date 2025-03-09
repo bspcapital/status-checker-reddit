@@ -17,7 +17,7 @@ const UserReporting = () => {
 
 
       const resp = await fetch('https://status-checker-backend.vercel.app/api/test')
-      .then(response => res.json())
+      .then(response => resp.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
 
