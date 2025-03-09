@@ -25,9 +25,9 @@ const AdPlacement = ({ position, className = '' }: AdPlacementProps) => {
   const getPositionStyles = () => {
     switch (position) {
       case 'top':
-        return 'w-full h-[90px] mx-auto';
+        return 'w-full h-[90px] mx-auto fixed top-0 left-0 right-0 z-50';
       case 'bottom':
-        return 'w-full h-[90px] mx-auto';
+        return 'w-[800px] h-[90px] mx-auto fixed bottom-0 left-0 right-0'; 
       case 'left':
         return 'w-[160px] h-[600px] my-4 mx-auto';
       case 'right':
@@ -49,7 +49,7 @@ const AdPlacement = ({ position, className = '' }: AdPlacementProps) => {
       data-ad-position={position}
     >
       <div className="text-xs text-muted-foreground opacity-70">
-        Advertisement
+        
       </div>
     </div>
   );

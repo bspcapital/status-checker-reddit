@@ -33,12 +33,12 @@ const Index = () => {
         
         {/* Status Indicator */}
         <div className="w-full mb-3">
-          <StatusIndicator status={currentStatus.status} message={currentStatus.message} />
+          <StatusIndicator websiteId={1} />
         </div>
         
         {/* History Graph */}
         <div className="w-full mb-3">
-          <HistoryGraph data={historyData} />
+          <HistoryGraph websiteId={1} />
         </div>
         
         {/* City Statistics */}

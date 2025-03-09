@@ -1,61 +1,127 @@
-
 import { useEffect, useState } from 'react';
 import { AlertCircle, CheckCircle, AlertTriangle } from 'lucide-react';
 import { Status } from '@/utils/statusData';
 
 interface StatusIndicatorProps {
-  status: Status;
-  message: string;
+  websiteId: number; // Pass the website ID as a prop
 }
 
-const StatusIndicator = ({ status, message }: StatusIndicatorProps) => {
-  const [mounted, setMounted] = useState(false);
-  
+const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
+  const [status, setStatus] = useState<Status>('unknown'); // Default to 'unknown'
+  const [message, setMessage] = useState('Loading...'); // Default message
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState<string | null>(null); // Error state
+
+  // Function to fetch status from the backend
+  const fetchStatus = async () => {
+    try {
+      const response = await fetch('/api/website-status?website_id=1');
+      if (!response.ok) {
+        throw new Error('Failed to fetch status');
+      }
+
+      const data = await response.json();
+      // Update status and message based on the API response
+      setStatus(data.status || 'unknown');
+
+      // Set the message based on the status
+      switch (data.status) {
+        case 'up':
+          setMessage('Reddit appears to be operational.');
+          break;
+        case 'down':
+          setMessage('Reddit appears to be down.');
+          break;
+        case 'issues':
+          setMessage('Reddit is experiencing issues.');
+          break;
+        default:
+          setMessage('Unknown status');
+      }
+
+
+
+    } catch (err) {
+      setError(err.message);
+      setStatus('unknown');
+      setMessage('Failed to fetch status');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch data when the component mounts (page loads)
   useEffect(() => {
-    setMounted(true);
-    
-    // Reset the animation when status changes
-    return () => setMounted(false);
-  }, [status]);
-  
+    fetchStatus();
+  }, [websiteId]); // Re-fetch when websiteId changes
+
+  // Fetch data every minute
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchStatus();
+    }, 60000); // 60,000 milliseconds = 1 minute
+
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, [websiteId]); // Re-set interval when websiteId changes
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center py-6">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-400"></div>
+        <p className="mt-2 text-gray-600">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center py-6">
+        <AlertCircle className="h-16 w-16 text-status-down" strokeWidth={1.5} />
+        <h1 className="text-3xl md:text-4xl font-bold text-status-down">{message}</h1>
+        <p className="text-sm text-gray-600 mt-2">{error}</p>
+      </div>
+    );
+  }
+
   return (
-    <div className={`flex flex-col items-center justify-center text-center transition-all duration-500 space-y-2 animate-fade-in py-6 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`flex flex-col items-center justify-center text-center transition-all duration-500 space-y-2 animate-fade-in py-6 mt-16 z-40`}>
       <div className="mb-2">
         {status === 'up' && (
-          <CheckCircle 
-            className="h-16 w-16 md:h-20 md:w-20 text-status-up animate-pulse-slow" 
-            strokeWidth={1.5} 
+          <CheckCircle
+            className="h-16 w-16 md:h-20 md:w-20 text-status-up animate-pulse-slow"
+            strokeWidth={1.5}
           />
         )}
         {status === 'down' && (
-          <AlertCircle 
-            className="h-16 w-16 md:h-20 md:w-20 text-status-down animate-pulse-slow" 
-            strokeWidth={1.5} 
+          <AlertCircle
+            className="h-16 w-16 md:h-20 md:w-20 text-status-down animate-pulse-slow"
+            strokeWidth={1.5}
           />
         )}
         {status === 'issues' && (
-          <AlertTriangle 
-            className="h-16 w-16 md:h-20 md:w-20 text-status-issues animate-pulse-slow" 
-            strokeWidth={1.5} 
+          <AlertTriangle
+            className="h-16 w-16 md:h-20 md:w-20 text-status-issues animate-pulse-slow"
+            strokeWidth={1.5}
           />
         )}
       </div>
-      
-      <h1 
+
+      <h1
         className={`text-3xl md:text-4xl font-bold transition-colors duration-300 ${
-          status === 'up' ? 'text-status-up' : 
-          status === 'down' ? 'text-status-down' : 
+          status === 'up' ? 'text-status-up' :
+          status === 'down' ? 'text-status-down' :
           'text-status-issues'
         }`}
       >
         {message}
       </h1>
-      
+
       <div className="flex items-center justify-center mt-3 gap-2">
         <div className="flex items-center justify-center h-8 w-8 rounded-full bg-secondary">
-          <img 
-            src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" 
-            alt="Reddit logo" 
+          <img
+            src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png"
+            alt="Reddit logo"
             className="h-5 w-5"
           />
         </div>
