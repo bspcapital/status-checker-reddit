@@ -16,7 +16,7 @@ const UserReporting = () => {
       const { ip: ip_address } = await ipResponse.json();
 
 
-      const resp fetch('https://status-checker-backend.vercel.app/api/test')
+      const resp = await fetch('https://status-checker-backend.vercel.app/api/test')
       .then(response => res.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
