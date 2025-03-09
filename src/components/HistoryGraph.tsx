@@ -22,7 +22,7 @@ const HistoryGraph = ({ websiteId }: HistoryGraphProps) => {
 
   const fetchHistoryData = async () => {
     try {
-      const response = await fetch(`/api/website-status?website_id=${websiteId}`);
+      const response = await fetch(`${apiBaseUrl}/api/website-status?website_id=${websiteId}`);
       if (!response.ok) {
         throw new Error('Failed to fetch history data');
       }

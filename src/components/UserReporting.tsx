@@ -16,7 +16,7 @@ const UserReporting = () => {
       const { ip: ip_address } = await ipResponse.json();
 
       // Send the report to the backend
-      const response = await fetch('/api/user-reports', {
+      const response = await fetch(`${apiBaseUrl}/api/user-reports`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

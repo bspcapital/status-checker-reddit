@@ -16,7 +16,7 @@ const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
   // Function to fetch status from the backend
   const fetchStatus = async () => {
     try {
-      const response = await fetch('/api/website-status?website_id=1');
+      const response = await fetch(`${apiBaseUrl}/api/website-status?website_id=1`);
       if (!response.ok) {
         throw new Error('Failed to fetch status');
       }

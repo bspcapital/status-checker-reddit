@@ -18,7 +18,7 @@ const ReportStatistics = () => {
     const fetchReportStatistics = async () => {
       try {
         // Fetch data from the backend API
-        const response = await fetch('/api/website-status?website_id=1');
+        const response = await fetch(`${apiBaseUrl}/api/website-status?website_id=1`);
         if (!response.ok) {
           throw new Error('Failed to fetch report statistics');
         }
