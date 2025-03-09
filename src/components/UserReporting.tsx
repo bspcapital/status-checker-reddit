@@ -15,12 +15,6 @@ const UserReporting = () => {
       const ipResponse = await fetch('https://api.ipify.org?format=json');
       const { ip: ip_address } = await ipResponse.json();
 
-
-      const resp = await fetch('https://status-checker-backend.vercel.app/api/test')
-      .then(response => resp.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
-
       // Send the report to the backend
       const response = await fetch(`${apiBaseUrl}/api/user-reports`, {
         method: 'POST',
