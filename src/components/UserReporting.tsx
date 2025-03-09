@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AlertCircle, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const UserReporting = () => {
   const [isSubmitting, setIsSubmitting] = useState<'down' | 'issues' | null>(null);

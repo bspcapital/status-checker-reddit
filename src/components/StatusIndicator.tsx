@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AlertCircle, CheckCircle, AlertTriangle } from 'lucide-react';
 import { Status } from '@/utils/statusData';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface StatusIndicatorProps {
   websiteId: number; // Pass the website ID as a prop

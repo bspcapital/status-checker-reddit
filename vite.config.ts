@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', // Your backend URL
+        target: 'https://status-checker-backend.vercel.app', // Your backend URL
         changeOrigin: true,
         rewrite: (path) => path, // Do not remove /api prefix
       },

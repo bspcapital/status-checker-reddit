@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { DayStatus, formatDate } from '@/utils/statusData';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface HistoryGraphProps {
   websiteId: number; // Pass the website ID as a prop
