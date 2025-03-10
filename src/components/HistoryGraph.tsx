@@ -71,7 +71,7 @@ const HistoryGraph = ({ websiteId }: HistoryGraphProps) => {
           </div>
           <div className="text-right">
             {/* Display dynamic uptime percentage */}
-            <p className="text-sm text-muted-foreground">{uptimePercentage !== null ? `${uptimePercentage}% uptime in the past 90 days.` : 'Calculating uptime...'}</p>
+            <p className="text-sm text-muted-foreground">{uptimePercentage !== null ? `${uptimePercentage}% uptime in recent days.` : 'Calculating uptime...'}</p>
           </div>
         </div>
         
@@ -99,7 +99,7 @@ const HistoryGraph = ({ websiteId }: HistoryGraphProps) => {
         {/* Updated 90 days ago/Today line */}
         <div className="text-center text-sm text-muted-foreground mt-2">
           <div className="flex justify-between items-center">
-            <span>Past 90 Days</span>
+            <span>Recent Past</span>
             <span>Today</span>
           </div>
           <div className="w-full border-t border-muted-foreground mt-1"></div>
