@@ -5,6 +5,7 @@ import HistoryGraph from '@/components/HistoryGraph';
 import UserReporting from '@/components/UserReporting';
 import RelatedSites from '@/components/RelatedSites';
 import ReportStatistics from '@/components/ReportStatistics';
+import SocialShare from '@/components/SocialShare';
 import AdPlacement from '@/components/AdPlacement';
 import { getCurrentStatus, historyData } from '@/utils/statusData';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -27,54 +28,65 @@ const Index = () => {
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col items-center py-4 px-4 max-w-4xl mx-auto w-full pb-20">
         {/* Top Ad */}
+      {/*
         <div className="w-full mb-3">
           <AdPlacement position="top" />
-        </div>
+        </div> */}
 
         {/* SEO Headings */}
-        <header className="w-full mb-6 text-center text-background">
+        <header className="w-full mb-6 text-center">
           {/* Main Heading (H1) */}
-          <h1 className="text-3xl font-semibold mb-2">
+          <h1 className="text-3xl font-semibold mb-2 sr-only">
             Is Reddit Down? Live Status & Outage Reports
           </h1>
           {/* Sub Heading (H2) */}
-          <h2 className="text-xl mb-4">
+          <h2 className="text-xl mb-4 sr-only">
             Stay informed with real-time Reddit server status and historical data.
           </h2>
         </header>
+        <div>
+          <SocialShare title="Is Reddit Down⚡Live Status & Outage Reports | IsRedditDown.net" />
+        </div>
         
         {/* Status Indicator */}
         <div className="w-full mb-3">
+          <h2 className="sr-only">Current Status</h2>
           <StatusIndicator websiteId={1} />
         </div>
         
         {/* History Graph */}
         <div className="w-full mb-3">
+          <h2 className="sr-only">Outage History</h2>
           <HistoryGraph websiteId={1} />
         </div>
 
         {/* User Reporting */}
         <div className="w-full mb-3">
+          <h2 className="sr-only">Report an Issue</h2>
           <UserReporting />
         </div>
         
         {/* City Statistics */}
         <div className="w-full mb-3">
+          <h2 className="sr-only">Report Statistics</h2>
           <ReportStatistics />
         </div>
                 
         {/* Related Sites - with increased visibility */}
         <div className="w-full mb-4 mt-1">
+          <h2 className="sr-only">Related Sites</h2>
           <RelatedSites />
         </div>
         
         {/* Bottom Ad */}
+        {/*
         <div className="w-full mb-3">
           <AdPlacement position="bottom" />
-        </div>
+        </div> */}
       </main>
       
       {/* Desktop Side Ads */}
+      {/*
       {!isMobile && (
         <>
           <div className="fixed top-1/2 left-0 transform -translate-y-1/2 hidden lg:block">
@@ -83,8 +95,8 @@ const Index = () => {
           <div className="fixed top-1/2 right-0 transform -translate-y-1/2 hidden lg:block">
             <AdPlacement position="right" />
           </div>
-        </>
-      )}
+        </> */}
+      
     </div>
   );
 };

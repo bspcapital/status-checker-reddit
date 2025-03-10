@@ -12,6 +12,7 @@ const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
   const [message, setMessage] = useState('Loading...'); // Default message
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState<string | null>(null); // Error state
+  const [lastPinged, setLastPinged] = useState<string | null>(null); // Timestamp state
 
   // Function to fetch status from the backend
   const fetchStatus = async () => {
@@ -40,7 +41,14 @@ const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
           setMessage('Unknown status');
       }
 
-
+      // Update the last pinged timestamp with the user's local timezone
+      if (data.history && data.history.length > 0) {
+        const latestTimestamp = data.history[data.history.length - 1].date;
+        const formattedTimestamp = new Date(latestTimestamp).toLocaleString(undefined, {
+          timeZoneName: 'short', // Automatically uses the user's local timezone
+        });
+        setLastPinged(formattedTimestamp);
+      }
 
     } catch (err) {
       setError(err.message);
@@ -126,7 +134,8 @@ const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
             className="h-5 w-5"
           />
         </div>
-        <span className="text-sm font-medium opacity-75">Reddit Status Checker</span>
+        <span className="text-sm font-medium opacity-75">Reddit Status Checker
+        {lastPinged && ` - last pinged at ${lastPinged}`}</span>
       </div>
     </div>
   );
