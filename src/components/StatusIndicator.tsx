@@ -40,7 +40,6 @@ const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
         default:
           setMessage('Unknown status');
       }
-      console.log(data.lastPinged);
 
       // Update the last pinged timestamp
       if (data.lastPinged) {
