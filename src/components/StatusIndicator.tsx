@@ -6,7 +6,7 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 interface StatusIndicatorProps {
   websiteId: number; // Pass the website ID as a prop
 }
-
+console.log(apiBaseUrl);
 const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
   const [status, setStatus] = useState<Status>('unknown'); // Default to 'unknown'
   const [message, setMessage] = useState('Loading...'); // Default message
