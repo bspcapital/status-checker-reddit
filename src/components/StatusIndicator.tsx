@@ -40,14 +40,20 @@ const StatusIndicator = ({ websiteId }: StatusIndicatorProps) => {
         default:
           setMessage('Unknown status');
       }
+      console.log(data.lastPinged);
 
-      // Update the last pinged timestamp with the user's local timezone
-      if (data.history && data.history.length > 0) {
-        const latestTimestamp = data.history[data.history.length - 1].date;
-        const formattedTimestamp = new Date(latestTimestamp).toLocaleString(undefined, {
-          timeZoneName: 'short', // Automatically uses the user's local timezone
+      // Update the last pinged timestamp
+      if (data.lastPinged) {
+      const formattedTime = new Date(data.lastPinged).toLocaleTimeString(undefined, {
+        hour: 'numeric', // e.g., "6"
+        minute: '2-digit', // e.g., "45"
+        second: '2-digit', // e.g., "00"
+        hour12: true, // Use 12-hour format (e.g., "PM")
+        timeZoneName: 'short', // Include timezone abbreviation (e.g., "EDT")
         });
-        setLastPinged(formattedTimestamp);
+        setLastPinged(formattedTime);
+      } else {
+        setLastPinged(null); // No timestamp available
       }
 
     } catch (err) {
