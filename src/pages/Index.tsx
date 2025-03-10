@@ -40,17 +40,17 @@ const Index = () => {
         <div className="w-full mb-3">
           <HistoryGraph websiteId={1} />
         </div>
-        
-        {/* City Statistics */}
-        <div className="w-full mb-3">
-          <ReportStatistics />
-        </div>
-        
+
         {/* User Reporting */}
         <div className="w-full mb-3">
           <UserReporting />
         </div>
         
+        {/* City Statistics */}
+        <div className="w-full mb-3">
+          <ReportStatistics />
+        </div>
+                
         {/* Related Sites - with increased visibility */}
         <div className="w-full mb-4 mt-1">
           <RelatedSites />
