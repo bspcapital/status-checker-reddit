@@ -63,7 +63,7 @@ const UserReporting = () => {
                 `}
               >
                 <AlertCircle className="w-4 h-4 mr-2 text-status-down" />
-                <span>Report Down</span>
+                <span>Reddit's down</span>
               </button>
 
               <button
@@ -75,7 +75,7 @@ const UserReporting = () => {
                 `}
               >
                 <AlertTriangle className="w-4 h-4 mr-2 text-status-issues" />
-                <span>Report Issues/Slow</span>
+                <span>Reddit's slow</span>
               </button>
             </div>
           </>

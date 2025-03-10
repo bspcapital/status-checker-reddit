@@ -30,6 +30,18 @@ const Index = () => {
         <div className="w-full mb-3">
           <AdPlacement position="top" />
         </div>
+
+        {/* SEO Headings */}
+        <header className="w-full mb-6 text-center text-white">
+          {/* Main Heading (H1) */}
+          <h1 className="text-3xl font-semibold mb-2">
+            Is Reddit Down? Live Status & Outage Reports
+          </h1>
+          {/* Sub Heading (H2) */}
+          <h2 className="text-xl mb-4">
+            Stay informed with real-time Reddit server status and historical data.
+          </h2>
+        </header>
         
         {/* Status Indicator */}
         <div className="w-full mb-3">
