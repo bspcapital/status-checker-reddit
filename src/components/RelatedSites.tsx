@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@
 
 const RelatedSites = () => {
   const sites = [
-    { name: 'Is Reddit Down', url: 'https://isredditdown.net' },
+    { name: 'Is TikTok Down', url: 'https://istiktokdown.net' },
   ];
   const [dialogOpen, setDialogOpen] = useState(false);
   
@@ -25,24 +25,24 @@ const RelatedSites = () => {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-center">Check if Tiktok's down, more to come!</DialogTitle>
+            <DialogTitle className="text-center">Check if TikTok's down, more to come!</DialogTitle>
           </DialogHeader>
           <div className="py-6 text-center text-muted-foreground">
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
               {sites.map((site, index) => (
                 <a
                   key={index}
-                  href="https://isredditdown.net"
+                  href="https://istiktokdown.net"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary hover:underline transition-colors duration-150 flex items-center"
                 >
                 <img
                   src="/favicon2.png" // Path to your image in the public folder
-                  alt="Tiktok Icon"
+                  alt="TikTok Icon"
                   className="mr-2 h-6 w-6" // Optional: adjust size and spacing
                 />
-                  Is Tiktok Down? – Live Status Checker
+                  Is TikTok Down – Live Status Checker
                 </a>
               ))}
             </div>
