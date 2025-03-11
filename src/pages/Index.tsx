@@ -25,7 +25,7 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="w-full flex justify-center mt-6">
+      <div className="w-full flex justify-center mt-6 relative">
         <SocialShare title="Is Reddit Down⚡Live Status & Outage Reports | IsRedditDown.net" />
       </div>
       {/* Main Content Area */}
