@@ -37,7 +37,7 @@ const Index = () => {
         </div> */}
 
         {/* SEO Headings */}
-        <header className="w-full mb-6 text-center">
+        <header className="w-full text-center">
           {/* Main Heading (H1) */}
           <h1 className="text-3xl font-semibold mb-2 sr-only">
             Is Reddit Down? Live Status & Outage Reports
