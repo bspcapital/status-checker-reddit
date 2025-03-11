@@ -3,7 +3,11 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 
+
 const RelatedSites = () => {
+  const sites = [
+    { name: 'Is Reddit Down', url: 'https://isredditdown.net' },
+  ];
   const [dialogOpen, setDialogOpen] = useState(false);
   
   return (
@@ -21,10 +25,27 @@ const RelatedSites = () => {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-center">Coming Soon!</DialogTitle>
+            <DialogTitle className="text-center">Check if Tiktok's down, more to come!</DialogTitle>
           </DialogHeader>
           <div className="py-6 text-center text-muted-foreground">
-            This feature is currently in development and will be available soon.
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5">
+              {sites.map((site, index) => (
+                <a
+                  key={index}
+                  href="https://isredditdown.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary hover:underline transition-colors duration-150 flex items-center"
+                >
+                <img
+                  src="/favicon2.png" // Path to your image in the public folder
+                  alt="Tiktok Icon"
+                  className="mr-2 h-6 w-6" // Optional: adjust size and spacing
+                />
+                  Is Tiktok Down? – Live Status Checker
+                </a>
+              ))}
+            </div>
           </div>
         </DialogContent>
       </Dialog>
