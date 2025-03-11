@@ -38,7 +38,7 @@ const RelatedSites = () => {
                   className="hover:text-primary hover:underline transition-colors duration-150 flex items-center"
                 >
                 <img
-                  src="/favicon2.png" // Path to your image in the public folder
+                  src="/tiktokfav.png" // Path to your image in the public folder
                   alt="TikTok Icon"
                   className="mr-2 h-6 w-6" // Optional: adjust size and spacing
                 />
